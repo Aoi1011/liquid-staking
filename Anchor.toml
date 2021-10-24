@@ -1,11 +1,11 @@
-[programs.devnet]
+[programs.localnet]
 mysolana = "4B2EcqWMuDwGjy1aFRMEKrrf7JakJHiJHyeKwv12GZxn"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "/Users/aoikurokawa/.config/solana/id.json"
 
 [scripts]
