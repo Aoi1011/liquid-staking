@@ -2,6 +2,14 @@ use anchor_lang::prelude::*;
 
 declare_id!("4B2EcqWMuDwGjy1aFRMEKrrf7JakJHiJHyeKwv12GZxn");
 
+pub mod entrypoint;
+pub mod error;
+pub mod instruction;
+pub mod processor;
+pub mod state;
+
+
+
 #[program]
 pub mod mysolana {
     use super::*;

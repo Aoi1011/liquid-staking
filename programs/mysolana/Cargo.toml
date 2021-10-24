@@ -16,3 +16,5 @@ default = []
 
 [dependencies]
 anchor-lang = "0.17.0"
+borsh = "0.9.1"
+borsh-derive = "0.9.1"

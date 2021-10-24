@@ -636,6 +636,8 @@ name = "mysolana"
 version = "0.1.0"
 dependencies = [
  "anchor-lang",
+ "borsh",
+ "borsh-derive",
 ]
 
 [[package]]
