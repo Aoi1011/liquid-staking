@@ -98,3 +98,17 @@ pub fn check_token_mint(token: &TokenAccount, mint: Pubkey, field_name: &str) ->
         Err(ProgramError::InvalidArgument.into())
     }
 }
+
+pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str) -> Result<()> {
+    if token.owner == *owner {
+        Ok(())
+    } else {
+        msg!(
+            "Invalid token account {} owner {}. Expected {}",
+            field_name,
+            token.owner,
+            owner
+        );
+        Err(ProgramError::InvalidArgument.into())
+    }
+}
