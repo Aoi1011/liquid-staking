@@ -75,3 +75,12 @@ pub fn check_freeze_authority(mint: &Mint, field_name: &str) -> Result<()> {
         Err(ProgramError::InvalidArgument.into())
     }
 }
+
+pub fn check_mint_empty(mint: &Mint, field_name: &str) -> Result<()> {
+    if mint.supply == 0 {
+        Ok(())
+    } else {
+        msg!("Non empty mint {} supply: {}", field_name, mint.supply);
+        Err(ProgramError::InvalidArgument.into())
+    }
+}
