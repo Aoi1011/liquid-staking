@@ -84,3 +84,17 @@ pub fn check_mint_empty(mint: &Mint, field_name: &str) -> Result<()> {
         Err(ProgramError::InvalidArgument.into())
     }
 }
+
+pub fn check_token_mint(token: &TokenAccount, mint: Pubkey, field_name: &str) -> Result<()> {
+    if token.mint == mint {
+        Ok(())
+    } else {
+        msg!(
+            "Invalid token {} mint {}. Expected {}",
+            field_name,
+            token.mint,
+            mint
+        );
+        Err(ProgramError::InvalidArgument.into())
+    }
+}
