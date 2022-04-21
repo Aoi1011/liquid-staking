@@ -12,6 +12,7 @@ use ticket_account::TicketAccountData;
 pub mod calc;
 pub mod checks;
 pub mod error;
+pub mod located;
 pub mod stake_wrapper;
 pub mod ticket_account;
 
