@@ -13,6 +13,7 @@ pub mod calc;
 pub mod checks;
 pub mod error;
 pub mod liq_pool;
+pub mod list;
 pub mod located;
 pub mod stake_wrapper;
 pub mod ticket_account;

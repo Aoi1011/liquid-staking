@@ -99,6 +99,12 @@ impl From<anchor_lang::error::Error> for CmpError {
     }
 }
 
+// impl From<CommonError> for ProgramError {
+//     fn from(err: CommonError) -> Self {
+
+//     }
+// }
+
 /// A Comparable error: an error that can be compared (via equality) to other errors.
 #[repr(transparent)]
 #[derive(Debug)]
