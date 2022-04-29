@@ -152,6 +152,20 @@ impl List {
     ) -> Result<()> {
         if self.new_account != Pubkey::default() {
             msg!("Can not modify list {} while changing list's account");
+            return Err(ProgramError::InvalidAccountData.into());
         }
+        let capacity = self.capacity(data.len())?;
+        if self.len() >= capacity {
+            msg!("list {} with capacity {} is full", list_name, capacity);
+            return Err(ProgramError::AccountDataTooSmall.into());
+        }
+
+        let start = 8 + (self.len() * self.item_size()) as usize;
+        let mut cursor = Cursor::new(&mut data[start..(start + self.item_size() as usize)]);
+        item.serialize(&mut cursor)?;
+
+        self.count += 1;
+
+        Ok(())
     }
 }
