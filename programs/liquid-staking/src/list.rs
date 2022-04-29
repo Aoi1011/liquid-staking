@@ -168,4 +168,34 @@ impl List {
 
         Ok(())
     }
+
+    pub fn remove(&mut self, data: &mut [u8], index: u32, list_name: &str) -> Result<()> {
+        if self.new_account != Pubkey::default() {
+            msg!("Can not modify list {} while changing list's account");
+            return Err(ProgramError::InvalidAccountData.into());
+        }
+
+        if index >= self.len() {
+            msg!(
+                "list {} remove out of bounds ({} / {})",
+                list_name,
+                index,
+                self.len()
+            );
+            return Err(ProgramError::InvalidArgument.into());
+        }
+
+        self.count -= 1;
+        if index == self.count {
+            return Ok(());
+        }
+        let start = 8 + (index * self.item_size()) as usize;
+        let last_item_start = 8 + (self.count * self.item_size()) as usize;
+        data.copy_within(
+            last_item_start..last_item_start + self.item_size() as usize,
+            start,
+        );
+
+        Ok(())
+    }
 }
